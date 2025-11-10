@@ -1,147 +1,174 @@
-/* script.js - simple customizer logic for Stray8 demo */
-
-document.addEventListener("DOMContentLoaded", () => {
-  // DOM refs
-  const baseImg = document.getElementById("baseSneaker");
-  const overlayImg = document.getElementById("overlaySneaker");
-  const swatches = document.querySelectorAll(".swatch");
-  const uploadInput = document.getElementById("uploadInput");
-  const uploadName = document.getElementById("uploadName");
-  const presets = document.querySelectorAll(".preset");
-  const downloadBtn = document.getElementById("downloadBtn");
-  const clearBtn = document.getElementById("clearOverlay");
-  const message = document.getElementById("message");
-  const exportCanvas = document.getElementById("exportCanvas");
-
-  // utility: set overlay src and show/hide
-  function setOverlay(src) {
-    if (!src) {
-      overlayImg.src = "";
-      overlayImg.classList.add("hidden");
-      return;
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
     }
-    overlayImg.onload = () => {
-      overlayImg.classList.remove("hidden");
-      message.textContent = "";
-    };
-    overlayImg.onerror = () => {
-      message.textContent = "Failed to load design image.";
-      overlayImg.classList.add("hidden");
-    };
-    overlayImg.src = src;
-  }
-
-  // swatch click -> change base
-  swatches.forEach(s => {
-    s.addEventListener("click", () => {
-      swatches.forEach(x => x.classList.remove("active"));
-      s.classList.add("active");
-      const src = s.getAttribute("data-src");
-      baseImg.src = src;
-    });
-  });
-
-  // upload handling
-  uploadInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (!file) {
-      uploadName.textContent = "No file chosen";
-      return;
-    }
-    if (!file.type.startsWith("image/")) {
-      message.textContent = "Please choose an image file (png/jpg).";
-      return;
-    }
-    uploadName.textContent = file.name;
-    const url = URL.createObjectURL(file);
-    setOverlay(url);
-  });
-
-  // presets
-  presets.forEach(p => {
-    p.addEventListener("click", () => {
-      const src = p.getAttribute("data-src");
-      setOverlay(src);
-    });
-  });
-
-  // clear
-  clearBtn.addEventListener("click", () => {
-    setOverlay("");
-    uploadInput.value = "";
-    uploadName.textContent = "No file chosen";
-  });
-
-  // download - compose base + overlay on canvas and download PNG
-  downloadBtn.addEventListener("click", async () => {
-    message.textContent = "Preparing image…";
-    try {
-      // use natural dimensions for crisp result
-      await ensureLoaded(baseImg);
-      const w = baseImg.naturalWidth || baseImg.width;
-      const h = baseImg.naturalHeight || baseImg.height;
-
-      exportCanvas.width = w;
-      exportCanvas.height = h;
-      const ctx = exportCanvas.getContext("2d");
-
-      // draw white background (optional)
-      ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, w, h);
-
-      // draw base
-      ctx.drawImage(baseImg, 0, 0, w, h);
-
-      // draw overlay if exists
-      if (overlayImg.src && !overlayImg.classList.contains("hidden")) {
-        await ensureLoaded(overlayImg);
-        // overlay matching base size, center it
-        ctx.drawImage(overlayImg, 0, 0, w, h);
-      }
-
-      // create blob and download
-      exportCanvas.toBlob((blob) => {
-        if (!blob) {
-          message.textContent = "Failed to create image.";
-          return;
-        }
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = "stray8-mockup.png";
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        URL.revokeObjectURL(url);
-        message.textContent = "Download started.";
-      }, "image/png");
-    } catch (err) {
-      console.error(err);
-      message.textContent = "Error preparing image.";
-    }
-  });
-
-  // helper: ensure image is loaded
-  function ensureLoaded(img) {
-    return new Promise((resolve, reject) => {
-      if (!img.src) return resolve();
-      if (img.complete && img.naturalWidth !== 0) return resolve();
-      img.onload = () => resolve();
-      img.onerror = () => reject(new Error("Image failed to load: " + img.src));
-    });
-  }
-
-  // footer year
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // basic mobile nav toggle
-  const mobileToggle = document.getElementById("mobileToggle");
-  const nav = document.querySelector(".nav");
-  if (mobileToggle && nav) {
-    mobileToggle.addEventListener("click", () => {
-      if (nav.style.display === "block") nav.style.display = "";
-      else nav.style.display = "block";
-    });
-  }
 });
+
+// Mobile menu toggle
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuToggle.addEventListener('click', () => {
+    mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+    
+    // Animate hamburger
+    const spans = mobileMenuToggle.querySelectorAll('span');
+    if (mobileMenu.style.display === 'flex') {
+        spans[0].style.transform = 'rotate(45deg) translateY(8px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
+    } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    }
+});
+
+// Close mobile menu when link is clicked
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+    });
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Gallery item click effect
+const galleryItems = document.querySelectorAll('.gallery-item');
+galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+        const img = item.querySelector('img');
+        // Create a simple lightbox effect
+        const lightbox = document.createElement('div');
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = '0';
+        lightbox.style.left = '0';
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.background = 'rgba(0, 0, 0, 0.95)';
+        lightbox.style.zIndex = '9999';
+        lightbox.style.display = 'flex';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.cursor = 'pointer';
+        
+        const imgClone = img.cloneNode();
+        imgClone.style.maxWidth = '90%';
+        imgClone.style.maxHeight = '90%';
+        imgClone.style.borderRadius = '15px';
+        
+        lightbox.appendChild(imgClone);
+        document.body.appendChild(lightbox);
+        
+        lightbox.addEventListener('click', () => {
+            document.body.removeChild(lightbox);
+        });
+    });
+});
+
+// Exit intent popup
+let exitPopupShown = false;
+const exitPopup = document.getElementById('exitPopup');
+const exitPopupClose = document.getElementById('exitPopupClose');
+const exitPopupForm = document.getElementById('exitPopupForm');
+
+document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !exitPopupShown && window.innerWidth > 768) {
+        exitPopup.classList.add('active');
+        exitPopupShown = true;
+    }
+});
+
+exitPopupClose.addEventListener('click', () => {
+    exitPopup.classList.remove('active');
+});
+
+exitPopup.addEventListener('click', (e) => {
+    if (e.target === exitPopup) {
+        exitPopup.classList.remove('active');
+    }
+});
+
+exitPopupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = exitPopupForm.querySelector('input').value;
+    alert(`Thank you! Your ₹500 off code will be sent to ${email}`);
+    exitPopup.classList.remove('active');
+    // Here you would normally send the email to your backend
+});
+
+// Intersection Observer for fade-in animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+// Observe sections for animation
+document.querySelectorAll('.gallery-item, .step, .pricing-card, .contact-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// Add parallax effect to hero
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroImage = document.querySelector('.hero-shoe');
+    if (heroImage) {
+        heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+});
+
+// Pricing card hover effect enhancement
+const pricingCards = document.querySelectorAll('.pricing-card');
+pricingCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        pricingCards.forEach(c => {
+            if (c !== card) {
+                c.style.opacity = '0.5';
+            }
+        });
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        pricingCards.forEach(c => {
+            c.style.opacity = '1';
+        });
+    });
+});
+
+// Console message for developers
+console.log('%cSTRAY8 👟', 'color: #FF2B70; font-size: 24px; font-weight: bold;');
+console.log('%cWear What You Want', 'color: #00E6FF; font-size: 16px;');
+console.log('Founded by Om, Rishabh & Mihir');
+console.log('Made with ❤️ in India');
