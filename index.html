@@ -1,123 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Stray8 | Custom Anime & Graffiti Sneakers in India</title>
-  <meta name="description" content="Stray8 - custom anime & graffiti sneakers" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stray8 - Wear What You Want | Custom Sneakers India</title>
+    <meta name="description" content="India's boldest custom sneakers. Anime, graffiti & art hand-painted on premium kicks. Founded by Om, Rishabh & Mihir.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <div class="logo">Stray8</div>
-        <div class="tag">Wear What You Want</div>
-      </div>
-      <nav class="nav">
-        <a href="#custom">Customize</a>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">STRAY8</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="https://wa.me/917208770326?text=Hey%20Stray8%20Team!%20%F0%9F%91%9F%20I%20want%20to%20bring%20my%20vision%20to%20life.%20Let%27s%20create%20something%20legendary%20together!" target="_blank" class="cta-button">Customize Now</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">Home</a>
         <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
-        <a href="#contact" class="btn btn-primary">Order</a>
-      </nav>
-      <button class="mobile-menu" id="mobileToggle" aria-label="Toggle menu">☰</button>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="https://wa.me/917208770326?text=Hey%20Stray8%20Team!%20%F0%9F%91%9F%20I%20want%20to%20bring%20my%20vision%20to%20life.%20Let%27s%20create%20something%20legendary%20together!" target="_blank" class="cta-button-mobile">Customize Now</a>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <h1>Wear What You Want</h1>
-          <p class="lead">We turn your thoughts into reality — India’s sneaker customization brand.</p>
-          <a href="#custom" class="btn btn-primary large">Customize Now</a>
-        </div>
-        <div class="hero-image">
-          <img src="hero.png" alt="Stray8 hero sneaker" />
-        </div>
-      </div>
-    </section>
-
-    <section id="custom" class="container custom-section">
-      <h2>Design Your Own Sneaker</h2>
-
-      <div class="custom-wrap">
-        <div class="display-panel" aria-hidden="false">
-          <div class="sneaker-stage">
-            <img id="baseSneaker" src="base-white.png" alt="Base sneaker" class="base-img" />
-            <img id="overlaySneaker" src="" alt="Design overlay" class="overlay-img hidden" />
-          </div>
-          <canvas id="exportCanvas" class="hidden" />
-        </div>
-
-        <aside class="controls">
-          <div class="control-group">
-            <label>Base color</label>
-            <div class="swatches">
-              <button class="swatch active" data-src="base-white.png" aria-label="White base"></button>
-              <button class="swatch" data-src="base-black.png" aria-label="Black base"></button>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Wear What You Want</h1>
+                <p class="hero-subtitle">India's boldest custom sneakers. Anime, graffiti & art—hand-painted in India.</p>
+                <div class="hero-cta">
+                    <a href="https://wa.me/917208770326?text=Hey%20Stray8%20Team!%20%F0%9F%91%9F%20I%20want%20to%20bring%20my%20vision%20to%20life.%20Let%27s%20create%20something%20legendary%20together!" target="_blank" class="primary-button">Start Your Custom</a>
+                    <a href="#gallery" class="secondary-button">View Gallery</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="badge">✓ Made in India</div>
+                    <div class="badge">✓ 7-Day Turnaround</div>
+                    <div class="badge">✓ 100% Satisfaction</div>
+                </div>
             </div>
-          </div>
-
-          <div class="control-group">
-            <label for="uploadInput">Upload your design</label>
-            <div class="file-row">
-              <input id="uploadInput" type="file" accept="image/png, image/jpeg" />
-              <div id="uploadName" class="file-name">No file chosen</div>
+            <div class="hero-image">
+                <img src="/assets/t1.png" alt="Custom Stray8 Sneaker" class="hero-shoe">
             </div>
-            <small class="muted">PNG with transparency works best.</small>
-          </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
 
-          <div class="control-group">
-            <label>Presets</label>
-            <div class="preset-row">
-              <button class="preset" data-src="preset-1.png">Preset 1</button>
-              <button class="preset" data-src="preset-2.png">Preset 2</button>
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="stats">
+                <div class="stat">
+                    <h3>1000+</h3>
+                    <p>Customs Created</p>
+                </div>
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat">
+                    <h3>7 Days</h3>
+                    <p>Avg. Turnaround</p>
+                </div>
+                <div class="stat">
+                    <h3>100%</h3>
+                    <p>Hand-Painted</p>
+                </div>
             </div>
-          </div>
-
-          <div class="control-group">
-            <button id="downloadBtn" class="btn btn-primary full">Download Mockup</button>
-            <button id="clearOverlay" class="btn full">Clear Design</button>
-          </div>
-
-          <div id="message" class="muted small"></div>
-        </aside>
-      </div>
-
+        </div>
     </section>
 
-    <section id="about" class="container section">
-      <h2>About Stray8</h2>
-      <p>Stray8 is more than a brand — it's a canvas for self-expression. We handpaint and print locally in India, turning your ideas into wearable art.</p>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Our Creations</h2>
+            <p class="section-subtitle">Every pair tells a story. What's yours?</p>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t2.png" alt="Custom Sneaker Design 1">
+                    <div class="gallery-overlay">
+                        <p>Anime Custom</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t3.png" alt="Custom Sneaker Design 2">
+                    <div class="gallery-overlay">
+                        <p>Dragon Flame</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="character">
+                    <img src="/assets/t4.png" alt="Custom Sneaker Design 3">
+                    <div class="gallery-overlay">
+                        <p>Character Art</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t5.png" alt="Custom Sneaker Design 4">
+                    <div class="gallery-overlay">
+                        <p>Ocean Warrior</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="character">
+                    <img src="/assets/t6.png" alt="Custom Sneaker Design 5">
+                    <div class="gallery-overlay">
+                        <p>Pop Culture</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pattern">
+                    <img src="/assets/t7.png" alt="Custom Sneaker Design 6">
+                    <div class="gallery-overlay">
+                        <p>Abstract Design</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tshirt">
+                    <img src="/assets/t8.png" alt="Custom T-shirt Design 1">
+                    <div class="gallery-overlay">
+                        <p>Custom Tee</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pattern">
+                    <img src="/assets/t9.png" alt="Custom Sneaker Design 7">
+                    <div class="gallery-overlay">
+                        <p>Colorful Pattern</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="character">
+                    <img src="/assets/t10.png" alt="Custom Sneaker Design 8">
+                    <div class="gallery-overlay">
+                        <p>Iconic Character</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t11.png" alt="Custom Sneaker Design 9">
+                    <div class="gallery-overlay">
+                        <p>Anime Warriors</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t12.png" alt="Custom Sneaker Design 10">
+                    <div class="gallery-overlay">
+                        <p>Dual Design</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t13.png" alt="Custom Sneaker Design 11">
+                    <div class="gallery-overlay">
+                        <p>Lightning Strike</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pattern">
+                    <img src="/assets/t14.png" alt="Custom Sneaker Design 12">
+                    <div class="gallery-overlay">
+                        <p>Vibrant Swoosh</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="tshirt">
+                    <img src="/assets/t15.png" alt="Custom T-shirt Design 2">
+                    <div class="gallery-overlay">
+                        <p>Streetwear Tee</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t16.png" alt="Custom Sneaker Design 13">
+                    <div class="gallery-overlay">
+                        <p>Legendary Design</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t17.png" alt="Custom Sneaker Design 14">
+                    <div class="gallery-overlay">
+                        <p>Epic Battle</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t18.png" alt="Custom Sneaker Design 15">
+                    <div class="gallery-overlay">
+                        <p>Warrior Spirit</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pattern">
+                    <img src="/assets/t19.png" alt="Custom Sneaker Design 16">
+                    <div class="gallery-overlay">
+                        <p>Mystical Art</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="anime">
+                    <img src="/assets/t20.png" alt="Custom Sneaker Design 17">
+                    <div class="gallery-overlay">
+                        <p>Dragon Power</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="pattern">
+                    <img src="/assets/t21.png" alt="Custom Sneaker Design 18">
+                    <div class="gallery-overlay">
+                        <p>Ultimate Design</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <a href="https://www.instagram.com/stray8_in/" target="_blank" class="secondary-button">View More on Instagram</a>
+            </div>
+        </div>
     </section>
 
-    <section id="gallery" class="container section">
-      <h2>Our Custom Creations</h2>
-      <div class="gallery-grid">
-        <img src="https://via.placeholder.com/600x400/FF2B70/FFFFFF?text=Anime+Dragon+Sneaker" alt="">
-        <img src="https://via.placeholder.com/600x400/00EAFF/000000?text=Graffiti+Art+Sneaker" alt="">
-        <img src="https://via.placeholder.com/600x400/FFFFFF/FF2B70?text=Minimalist+Custom" alt="">
-      </div>
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">From vision to reality in 3 simple steps</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Share Your Vision</h3>
+                    <p>Tell us your idea, send reference images, or choose from our preset designs. Message us on WhatsApp or fill out the form.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Preview & Approve</h3>
+                    <p>We'll create a digital mockup of your custom design. Make tweaks until it's perfect, then we start painting.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Get Your Custom</h3>
+                    <p>Your hand-painted kicks are shipped within 7 days. Wear what you want, everywhere you go.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="container section">
-      <h2>Contact</h2>
-      <p>Order via WhatsApp: <a href="https://wa.me/919876543210" target="_blank">+91 98765 43210</a></p>
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing</h2>
+            <p class="section-subtitle">Transparent pricing, legendary results</p>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Simple Custom</h3>
+                        <div class="price">₹3,999</div>
+                        <p>Starting price</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Base sneaker included</li>
+                        <li>✓ Simple design/logo</li>
+                        <li>✓ 1 revision included</li>
+                        <li>✓ 7-day turnaround</li>
+                        <li>✓ Premium quality paint</li>
+                    </ul>
+                    <a href="https://wa.me/917208770326?text=Hey!%20I%27m%20interested%20in%20a%20Simple%20Custom%20design.%20Let%27s%20chat!" target="_blank" class="pricing-button">Get Started</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Intricate Custom</h3>
+                        <div class="price">₹6,499</div>
+                        <p>Best value</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Base sneaker included</li>
+                        <li>✓ Complex anime/character art</li>
+                        <li>✓ 2 revisions included</li>
+                        <li>✓ 7-day turnaround</li>
+                        <li>✓ Premium quality paint</li>
+                        <li>✓ Protective coating</li>
+                    </ul>
+                    <a href="https://wa.me/917208770326?text=Hey!%20I%27m%20interested%20in%20an%20Intricate%20Custom%20design.%20Let%27s%20create%20magic!" target="_blank" class="pricing-button primary">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Stray8 Original</h3>
+                        <div class="price">₹7,999</div>
+                        <p>Artist collaboration</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✓ Base sneaker included</li>
+                        <li>✓ Original design by our artists</li>
+                        <li>✓ Unlimited revisions</li>
+                        <li>✓ Priority 5-day turnaround</li>
+                        <li>✓ Premium quality paint</li>
+                        <li>✓ Protective coating</li>
+                        <li>✓ Certificate of authenticity</li>
+                    </ul>
+                    <a href="https://wa.me/917208770326?text=Hey!%20I%27m%20interested%20in%20a%20Stray8%20Original%20design.%20Let%27s%20create%20something%20legendary!" target="_blank" class="pricing-button">Get Started</a>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p>🚀 <strong>Rush Service:</strong> Need it faster? Add ₹1,499 for 3-4 day delivery</p>
+                <p>⚖️ <strong>Copyright Notice:</strong> We create fan art for personal use only. For licensed characters, we offer our Stray8 Original design service.</p>
+            </div>
+        </div>
     </section>
 
-  </main>
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Three Friends Who Refused to Blend In</h2>
+                <p>Om, Rishabh, and Mihir started Stray8 because every sneakerhead deserves to wear their truth. We're not just customizing shoes—we're giving you a canvas to express what makes you, <em>you</em>.</p>
+                <p>Every pair is hand-painted in India with the same obsession we'd pour into our own. Your Pinterest board? Your favorite character? That memory you want to walk in? Let's make it real.</p>
+                <div class="about-cta">
+                    <a href="https://www.instagram.com/stray8_in/" target="_blank" class="secondary-button">Follow Our Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>&copy; <span id="year"></span> Stray8 — All rights reserved.</div>
-      <div class="muted small">Made with ❤️ for sneakerheads</div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Create Together</h2>
+            <p class="section-subtitle">Ready to wear what you want? Reach out and let's bring your vision to life.</p>
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <p>Fastest way to reach us</p>
+                    <a href="https://wa.me/917208770326?text=Hey%20Stray8%20Team!%20%F0%9F%91%9F%20I%20want%20to%20bring%20my%20vision%20to%20life.%20Let%27s%20create%20something%20legendary%20together!" target="_blank" class="contact-button">Message Now</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📸</div>
+                    <h3>Instagram</h3>
+                    <p>See our latest work</p>
+                    <a href="https://www.instagram.com/stray8_in/" target="_blank" class="contact-button">@stray8_in</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Call Us</h3>
+                    <p>Speak with the founders</p>
+                    <a href="tel:+917208770326" class="contact-button">+91 7208770326</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">STRAY8</div>
+                    <p>India's boldest custom sneakers.<br>Anime, graffiti & art—hand-painted with passion.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/stray8_in/" target="_blank" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <a href="#home">Home</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#pricing">Pricing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#terms">Terms of Service</a>
+                        <a href="#privacy">Privacy Policy</a>
+                        <a href="#ip">IP Policy</a>
+                        <a href="#refund">Refund Policy</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <p>+91 7208770326</p>
+                        <p>Mumbai, India</p>
+                        <a href="https://www.instagram.com/stray8_in/" target="_blank">@stray8_in</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Stray8 Clothing. All rights reserved. Founded by Om, Rishabh & Mihir.</p>
+                <p class="disclaimer">By uploading artwork you confirm that you own the rights or have permission to use the uploaded content. Stray8 reserves the right to refuse orders that infringe intellectual property rights or contain inappropriate content.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917208770326?text=Hey%20Stray8%20Team!%20%F0%9F%91%9F%20I%20want%20to%20bring%20my%20vision%20to%20life.%20Let%27s%20create%20something%20legendary%20together!" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
+            <path d="M16 0C7.164 0 0 7.163 0 16c0 2.825.741 5.482 2.037 7.788L.073 30.926l7.304-1.916A15.936 15.936 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333c-2.467 0-4.787-.673-6.769-1.843l-.485-.29-5.029 1.318 1.342-4.898-.318-.502A13.265 13.265 0 012.667 16c0-7.364 5.97-13.333 13.333-13.333S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.317-9.983c-.4-.2-2.367-1.167-2.734-1.3-.366-.134-.633-.2-.9.2-.267.4-1.034 1.3-1.267 1.567-.234.266-.467.3-.867.1-.4-.2-1.687-.622-3.214-1.983-1.188-1.06-1.99-2.368-2.223-2.768-.234-.4-.025-.617.175-.816.18-.179.4-.467.6-.7.2-.234.267-.4.4-.667.134-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.234-2.967-.333-.8-.667-.667-.9-.667-.233 0-.5-.033-.767-.033s-.7.1-1.067.5c-.366.4-1.4 1.367-1.4 3.333s1.434 3.867 1.634 4.133c.2.267 2.767 4.233 6.7 5.933.934.4 1.667.634 2.234.8.934.3 1.784.267 2.45.167.75-.1 2.367-.967 2.7-1.9.334-.934.334-1.734.234-1.9-.1-.167-.367-.267-.767-.467z"/>
+        </svg>
+    </a>
+
+    <!-- Exit Intent Popup -->
+    <div class="exit-popup" id="exitPopup">
+        <div class="exit-popup-content">
+            <button class="exit-popup-close" id="exitPopupClose">&times;</button>
+            <h3>Wait! Before You Go...</h3>
+            <p>Get <strong>₹500 off</strong> your first custom pair</p>
+            <form class="exit-popup-form" id="exitPopupForm">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Claim Offer</button>
+            </form>
+        </div>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
